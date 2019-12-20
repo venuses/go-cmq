@@ -4,6 +4,10 @@ import (
 	"testing"
 )
 
+// var secretId = ""
+// var secretKey = ""
+// var endpointQueue = "https://cmq-queue-gz.api.qcloud.com"
+// var endpointTopic = "https://cmq-topic-gz.api.qcloud.com"
 
 func getClient() CmqAccount {
 	clt := NewClient(Account{
@@ -11,7 +15,7 @@ func getClient() CmqAccount {
 		TopicDomain: endpointTopic,
 		SecretID:    secretId,
 		SecretKey:   secretKey,
-		Region:      "gz",
+		// Region:      "gz",
 	})
 	return clt
 }
@@ -29,7 +33,7 @@ func TestAccount_ListQueue(t *testing.T) {
 func TestAccount_CreateQueue(t *testing.T) {
 	clt := getClient()
 	res, err := clt.CreateQueue(QueueCreateReq{
-		QueueName:           "hongtest",
+		QueueName:           "hongtest1",
 		MaxMsgHeapNum:       0,
 		PollingWaitSeconds:  0,
 		VisibilityTimeout:   0,
@@ -45,7 +49,7 @@ func TestAccount_CreateQueue(t *testing.T) {
 }
 func TestAccount_DeleteQueue(t *testing.T) {
 	clt := getClient()
-	res, err := clt.DeleteQueue("hongtest")
+	res, err := clt.DeleteQueue("queue-1")
 	if err != nil {
 		t.Error(err.Error())
 		return

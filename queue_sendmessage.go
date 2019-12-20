@@ -53,7 +53,9 @@ func (q QueueClient) SendMessage(req QueueMsgReq) (*QueueMsgResp, error) {
 	}
 	return &res, nil
 }
-
+// 批量发送消息
+// 注意：目前支持最多16条记录
+// ref：https://cloud.tencent.com/document/product/406/5838
 func (q QueueClient) BatchSendMessage(reqs QueueMsgsReq) (*QueueMsgsResp, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "BatchSendMessage",
@@ -62,7 +64,9 @@ func (q QueueClient) BatchSendMessage(reqs QueueMsgsReq) (*QueueMsgsResp, error)
 	})
 	params["queueName"] = q.queueName
 	if len(reqs.MsgBodys) == 0 {
-		return nil, errors.New("MsgBodys is required")
+		return nil, errors.New("require MsgBodys")
+	}else if len(reqs.MsgBodys)>16{
+		return nil, errors.New("to many MsgBodys")
 	}
 	for i := 0; i < len(reqs.MsgBodys); i++ {
 		params["msgBody"+"."+strconv.Itoa(i)] = reqs.MsgBodys[i]
