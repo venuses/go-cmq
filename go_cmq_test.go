@@ -33,13 +33,13 @@ func TestAccount_ListQueue(t *testing.T) {
 func TestAccount_CreateQueue(t *testing.T) {
 	clt := getClient()
 	res, err := clt.CreateQueue(QueueCreateReq{
-		QueueName:           "hongtest1",
+		QueueName:           "topic-2",
 		MaxMsgHeapNum:       0,
 		PollingWaitSeconds:  0,
-		VisibilityTimeout:   0,
+		VisibilityTimeout:   120,
 		MaxMsgSize:          65536,
-		MsgRetentionSeconds: 0,
-		RewindSeconds:       345600,
+		MsgRetentionSeconds: 4 * 3600,
+		// RewindSeconds:       345600, //todo 配置错误 https://cloud.tencent.com/document/product/406/5832
 	})
 	if err != nil {
 		t.Error(err)
