@@ -1,6 +1,8 @@
 # go-cmq
 
-## Tencent CMQ Golang SDK
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-brightgreen?logo=go)](https://pkg.go.dev/github.com/venuses/go-cmq?tab=doc)
+
+Tencent CMQ Golang SDK
 
 ## API
 

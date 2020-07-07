@@ -39,7 +39,7 @@ func TestAccount_CreateQueue(t *testing.T) {
 		VisibilityTimeout:   120,
 		MaxMsgSize:          65536,
 		MsgRetentionSeconds: 4 * 3600,
-		// RewindSeconds:       345600, //todo 配置错误 https://cloud.tencent.com/document/product/406/5832
+		RewindSeconds:       14400, // 回溯时间设置应该小于43200，并且不能大于消息生命周期
 	})
 	if err != nil {
 		t.Error(err)
@@ -58,7 +58,7 @@ func TestAccount_DeleteQueue(t *testing.T) {
 }
 func TestAccount_GetQueueAttributes(t *testing.T) {
 	clt := getClient()
-	res, err := clt.GetQueueAttributes("hongtest")
+	res, err := clt.GetQueueAttributes("topic-2")
 	if err != nil {
 		t.Log(err.Error())
 		return

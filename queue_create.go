@@ -13,7 +13,7 @@ type QueueCreateReq struct {
 	VisibilityTimeout   int
 	MaxMsgSize          int
 	MsgRetentionSeconds int
-	RewindSeconds       int
+	RewindSeconds       int // 回溯时间设置应该小于43200，并且不能大于消息生命周期
 }
 
 type QueueCreateResp struct {
@@ -29,7 +29,7 @@ func (a Account) CreateQueue(req QueueCreateReq) (*QueueCreateResp, error) {
 		Region:          a.Region,
 		Token:           a.Token,
 	})
-	if req.QueueName==""{
+	if req.QueueName == "" {
 		return nil, errors.New("queueName is required")
 	}
 	params["queueName"] = req.QueueName
