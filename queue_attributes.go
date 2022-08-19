@@ -57,7 +57,7 @@ type QueueAttrUpdateResp struct {
 	QueueAttrBase
 }
 
-func (a Account) GetQueueAttributes(queueName string) (*QueueAttrResp, error) {
+func (a *Account) GetQueueAttributes(queueName string) (*QueueAttrResp, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "GetQueueAttributes",
 		SecretId:        a.SecretID,
@@ -79,7 +79,7 @@ func (a Account) GetQueueAttributes(queueName string) (*QueueAttrResp, error) {
 	return &res, nil
 }
 
-func (a Account) SetQueueAttributes(req QueueUpdateReq) (*QueueAttrUpdateResp, error) {
+func (a *Account) SetQueueAttributes(req QueueUpdateReq) (*QueueAttrUpdateResp, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "SetQueueAttributes",
 		SecretId:        a.SecretID,

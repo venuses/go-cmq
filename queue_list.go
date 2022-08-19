@@ -16,7 +16,7 @@ type QueueList struct {
 	QueueName string `json:"queueName"`
 }
 
-func (a Account) ListQueue(searchWord string, offset, limit int) (*ListQueueResp, error) {
+func (a *Account) ListQueue(searchWord string, offset, limit int) (*ListQueueResp, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "ListQueue",
 		SecretId:        a.SecretID,

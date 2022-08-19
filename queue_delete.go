@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func (a Account) DeleteQueue(queueName string) (*BaseResponse, error) {
+func (a *Account) DeleteQueue(queueName string) (*BaseResponse, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "DeleteQueue",
 		SecretId:        a.SecretID,

@@ -29,13 +29,13 @@ type QueueClient struct {
 	account   *Account
 }
 
-func (a Account) GetQueue(queueName string) (queue QueueMessageAPI, err error) {
+func (a *Account) GetQueue(queueName string) (queue QueueMessageAPI, err error) {
 	if queueName == "" {
 		return queue, errors.New("queueName is required")
 	}
 	queue = QueueClient{
 		queueName: queueName,
-		account:   &a,
+		account:   a,
 	}
 	return queue, nil
 }

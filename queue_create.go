@@ -21,7 +21,7 @@ type QueueCreateResp struct {
 	QueueID string `json:"queueId"`
 }
 
-func (a Account) CreateQueue(req QueueCreateReq) (*QueueCreateResp, error) {
+func (a *Account) CreateQueue(req QueueCreateReq) (*QueueCreateResp, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "CreateQueue",
 		SecretId:        a.SecretID,

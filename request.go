@@ -8,7 +8,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"hash"
-	"io/ioutil"
+	"io"
 	"math/rand"
 	"net"
 	"net/http"
@@ -68,7 +68,7 @@ type reqCommon struct {
 	Token           string
 }
 
-func (a Account) getResponse(params map[string]interface{}) ([]byte, error) {
+func (a *Account) getResponse(params map[string]interface{}) ([]byte, error) {
 	encoder := false
 	if a.Method == http.MethodGet {
 		encoder = true
@@ -115,7 +115,7 @@ func (a Account) getResponse(params map[string]interface{}) ([]byte, error) {
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("http error code %d", resp.StatusCode)
 	}
-	body, err2 := ioutil.ReadAll(resp.Body)
+	body, err2 := io.ReadAll(resp.Body)
 	if err2 != nil {
 		return nil, err2
 	}

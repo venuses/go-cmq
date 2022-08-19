@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func (a Account) RewindQueue(queueName string, startConsumeTime time.Time) (*BaseResponse, error) {
+func (a *Account) RewindQueue(queueName string, startConsumeTime time.Time) (*BaseResponse, error) {
 	params := getCommonParams(reqCommon{
 		Action:          "RewindQueue",
 		SecretId:        a.SecretID,

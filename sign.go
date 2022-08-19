@@ -52,7 +52,7 @@ const (
 
 func mapToURLParam(src map[string]interface{}, encoder bool) string {
 	var keys []string
-	for k, _ := range src {
+	for k := range src {
 		keys = append(keys, k)
 	}
 	sort.Strings(keys)
