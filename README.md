@@ -36,3 +36,8 @@ A Golang SDK For Tencent CMQ
 - [ ] 主题相关接口
 - [ ] 消息相关接口
 - [ ] 订阅相关接口
+
+## License
+The package is licensed under the MIT and Apache License 2.0 licenses. Please see the LICENSE file for details.
+
+Released under the [Apache License 2.0](https://github.com/venuses/go-cmq/blob/master/License)
