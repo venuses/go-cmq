@@ -1,3 +1,3 @@
 module github.com/venuses/go-cmq
 
-go 1.13
+go 1.19

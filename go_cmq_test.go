@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-// var secretId = ""
-// var secretKey = ""
-// var endpointQueue = "https://cmq-queue-gz.api.qcloud.com"
-// var endpointTopic = "https://cmq-topic-gz.api.qcloud.com"
+var secretId = ""
+var secretKey = ""
+var endpointQueue = "https://cmq-queue-gz.api.qcloud.com"
+var endpointTopic = "https://cmq-topic-gz.api.qcloud.com"
 
 func getClient() CmqAccount {
 	clt := NewClient(Account{

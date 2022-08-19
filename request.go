@@ -109,7 +109,9 @@ func (a Account) getResponse(params map[string]interface{}) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer func() {
+		_ = resp.Body.Close()
+	}()
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("http error code %d", resp.StatusCode)
 	}
